@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<meta charset="utf-8">
+<head>
+<title>test de nowjs</title>
+<style type="text/css">
+body {
+    background: #22252A;
+	color: #EEE;
+	font-family: DejaVu Sans Mono, fixed;
+	font-size: 14pt;
+	line-height: 150%;
+}
+</style>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script src="/nowjs/now.js"></script>
+
+<script>
+$(document).ready(function(){
+  now.name = prompt("What's your name?", "");
+
+  now.propagateUpdate = function(name, message){
+    $("#text-input").val( message);
+  }
+
+  $('#text-input').keyup(function(event) {
+  	var texte = $("#text-input").val();
+  	now.inputUpdate(texte);
+  });
+
+});
+</script>
+</head>
+
+<body>
+<p>champ partagé grâce aux websockets</p>
+<input type="text" id="text-input">
+</body>
+</html>
